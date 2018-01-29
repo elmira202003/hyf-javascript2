@@ -3,8 +3,7 @@
 let number = [1, 2, 3, 4];
 let newNumber = [];
 
-newNumber = number.filter(arrNumbers => (arrNumbers % 2 !== 0));
-newNumber = newNumber.map( doubledNumbers => (  doubledNumbers * 2));
+newNumber = number.filter(arrNumbers => (arrNumbers % 2 !== 0)).map( doubledNumbers => ( doubledNumbers * 2));
 
 console.log("The doubled numbers are ", newNumber);
 console.log('**************************************************');
