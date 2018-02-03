@@ -16,34 +16,31 @@ foo(bar);
  // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next  
 console.log('\n***************Exercise number 2 ************************************************************\n');
 
-let sayNumber = [];
-
-function sayThree() {
-    sayNumber.push('sayThree');
-}
-
-function sayFive() {
-    sayNumber.push('sayFive');
-}
-
 function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
-
-    let numberArr = [];
-    for (let i = startIndex; i <= stopIndex ; i++){
-        numberArr.push(i);
-        if (i % 3 === 0) {
-            sayThree();
-        }
-        if (i % 5 === 0) {
-            sayFive();
-        }
+    const numbers = [];
+    for (let i = startIndex; i <= stopIndex; i++) {
+        numbers.push(i);
     }
-    console.log('Thee original array is : ' + numberArr);
-    console.log(sayNumber);
-   
+    console.log(numbers);
+
+    numbers.forEach(num => {
+        if (num % 3 === 0) {
+            threeCallback(num);
+        }
+        if (num % 5 === 0) {
+            fiveCallback(num);
+        }
+    })
 }
 
-threeFive(10, 15, sayThree, sayFive);
+// uses a closure
+function sayDivisibleBy(divisor) {
+    return function (num) {
+        console.log(`${num} is divisible by ${divisor}`);
+    }
+}
+
+threeFive(10, 15, sayDivisibleBy(3), sayDivisibleBy(5));
 
    
 //3. Please solve this problem using: https://www.freecodecamp.com/challenges/repeat-a-string-repeat-a-string
